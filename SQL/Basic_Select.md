@@ -1,4 +1,3 @@
-# Untitled
 
 ## **Revising the Select Query I**
 
