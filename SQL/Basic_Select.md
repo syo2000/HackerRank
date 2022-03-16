@@ -506,7 +506,9 @@ The **Employee** table containing employee data for a company is described as 
 | salary | Integer |
 
 where *employee_id* is an employee's ID number, *name* is their name, *months* is the total number of months they've been working for the company, and *salary* is the their monthly salary.
+
 ![](https://github.com/syo2000/HackerRank/blob/main/SQL/image/employee.PNG?raw=true)
+
 **Sample Output**
 
 `Angela
