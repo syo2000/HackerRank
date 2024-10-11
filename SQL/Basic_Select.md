@@ -1,4 +1,3 @@
-
 ## **Revising the Select Query I**
 
 Query all columns for all American cities in the **CITY** table with populations larger than `100000`. The **CountryCode** for America is `USA`.
@@ -15,7 +14,9 @@ The **CITY** table is described as follows:
 
 ```sql
 --MS SQL Server, MySQL
-select *from CITY where COUNTRYCODE = 'USA' and POPULATION > 100000;
+select *
+from CITY 
+where COUNTRYCODE = 'USA' and POPULATION > 100000;
 ```
 
 ## **Revising the Select Query II**
@@ -34,7 +35,9 @@ The **CITY** table is described as follows:
 
 ```sql
 --MS SQL Server, MySQL
-select NAME from CITY where COUNTRYCODE = 'USA' and POPULATION > 120000;
+select NAME 
+from CITY 
+where COUNTRYCODE = 'USA' and POPULATION > 120000;
 ```
 
 ## **Select All**
@@ -53,7 +56,8 @@ The **CITY** table is described as follows:
 
 ```sql
 --MS SQL Server, MySQL
-select *from CITY;
+select *
+from CITY;
 ```
 
 ## **Select By ID**
@@ -72,10 +76,12 @@ The **CITY** table is described as follows:
 
 ```sql
 --MS SQL Server, MySQL
-select *from CITY where ID = 1661;
+select *
+from CITY 
+where ID = 1661;
 ```
 
-## **Japanese Cities' Attributes**
+## **Japanese Cities’ Attributes**
 
 Query all attributes of every Japanese city in the **CITY** table. The **COUNTRYCODE** for Japan is `JPN`.
 
@@ -91,10 +97,12 @@ The **CITY** table is described as follows:
 
 ```sql
 --MS SQL Server, MySQL
-select *from CITY where COUNTRYCODE = 'JPN';
+select *
+from CITY 
+where COUNTRYCODE = 'JPN';
 ```
 
-## **Japanese Cities' Names**
+## **Japanese Cities’ Names**
 
 Query the names of all the Japanese cities in the **CITY** table. The **COUNTRYCODE** for Japan is JPN.
 
@@ -110,7 +118,9 @@ The **CITY** table is described as follows:
 
 ```sql
 --MS SQL Server, MySQL
-select NAME from CITY where COUNTRYCODE = 'JPN';
+select NAME 
+from CITY 
+where COUNTRYCODE = 'JPN';
 ```
 
 ## **Weather Observation Station 1**
@@ -131,7 +141,8 @@ where **LAT_N** is the northern latitude and **LONG_W** is the western longitu
 
 ```sql
 --MS SQL Server, MySQL
-select CITY, STATE from STATION;
+select CITY, STATE 
+from STATION;
 ```
 
 ## **Weather Observation Station 3**
@@ -148,11 +159,13 @@ The **STATION** table is described as follows:
 | LAT_N | NUMBER |
 | LONG_W | NUMBER |
 
-where **LAT_N** is the northern latitude and **LONG_W** is the western longitude.-MS SQL Server, MySQL
+where **LAT_N** is the northern latitude and **LONG_W** is the western longitude.L
 
 ```sql
 --MS SQL Server, MySQL
-select distinct(CITY) from STATION where ID%2 = 0;
+select distinct(CITY) 
+from STATION 
+where ID%2 = 0;
 ```
 
 ## **Weather Observation Station 4**
@@ -171,13 +184,14 @@ The **STATION** table is described as follows:
 
 where **LAT_N** is the northern latitude and **LONG_W** is the western longitude.
 
-For example, if there are three records in the table with **CITY** values 'New York', 'New York', 'Bengalaru', there are 2 different city names: 'New York' and 'Bengalaru'. The query returns **1**, because .
+For example, if there are three records in the table with **CITY** values ‘New York’, ‘New York’, ‘Bengalaru’, there are 2 different city names: ‘New York’ and ‘Bengalaru’. The query returns **1**, because .
 
 **total number of records - number of unique city names = 3 - 2 = 1**
 
 ```sql
 --MS SQL Server, MySQL
-select (count(CITY) - count(distinct(CITY))) from STATION;
+select (count(CITY) - count(distinct(CITY))) 
+from STATION;
 ```
 
 ## **Weather Observation Station 5**
@@ -202,8 +216,7 @@ For example, **CITY** has four entries: **DEF, ABC, PQRS** and **WXY**.
 
 **Sample Output**
 
-`ABC 3
-PQRS 4`
+`ABC 3 PQRS 4`
 
 **Explanation**
 
@@ -213,12 +226,26 @@ When ordered alphabetically, the **CITY** names are listed as **ABC, DEF, PQR
 
 ```sql
 --MS SQL Server
-select top 1 CITY, len(CITY) from STATION order by len(CITY) asc, CITY;
-select top 1 CITY, len(CITY) from STATION order by len(CITY) desc, CITY;
+select top 1 CITY, len(CITY) 
+from STATION 
+order by len(CITY) asc, CITY;
+
+select top 1 CITY, len(CITY) 
+from STATION 
+order by len(CITY) desc, CITY;
+
 --MySQL
-(select CITY, length(CITY) from STATION order by length(CITY) desc, CITY asc limit 1)
+(
+	select CITY, length(CITY) 
+	from STATION 
+	order by length(CITY) desc, CITY asc limit 1
+)
 union
-(select CITY, length(CITY) from STATION order by length(CITY) asc, CITY asc limit 1);
+(
+	select CITY, length(CITY) 
+	from STATION 
+	order by length(CITY) asc, CITY asc limit 1
+);
 ```
 
 ## **Weather Observation Station 6**
@@ -241,12 +268,26 @@ where *LAT_N* is the northern latitude and *LONG_W* is the western longitude.
 
 ```sql
 --MS SQL Server
-select distinct(CITY) from STATION where CITY like '[aeiou]%';
-select distinct CITY from STATION where substring(CITY,1,1) in ('a','e','i','o','u');
-select distinct CITY from STATION where left(CITY,1) in ('a','i','e','o','u');
+select distinct(CITY) 
+from STATION 
+where CITY like '[aeiou]%';
+
+select distinct CITY 
+from STATION 
+where substring(CITY,1,1) in ('a','e','i','o','u');
+
+select distinct CITY 
+from STATION 
+where left(CITY,1) in ('a','i','e','o','u');
+
 --MySQL
-select CITY from STATION where substr(CITY,1,1) in ('a','e','i','o','u');
-select distinct CITY from STATION where left(CITY,1) in ('a','i','e','o','u');
+select CITY 
+from STATION 
+where substr(CITY,1,1) in ('a','e','i','o','u');
+
+select distinct CITY 
+from STATION 
+where left(CITY,1) in ('a','i','e','o','u');
 ```
 
 ## **Weather Observation Station 7**
@@ -269,13 +310,30 @@ where *LAT_N* is the northern latitude and *LONG_W* is the western longitude.
 
 ```sql
 --MS SQL Server
-select distinct(CITY) from STATION where CITY like '%[aeiou]';
-select distinct CITY from STATION where substring(reverse(CITY),1,1) in ('a','e','i','o','u');
-select distinct CITY from STATION where right(CITY,1) in ('a','i','e','o','u');
+select distinct(CITY) 
+from STATION 
+where CITY like '%[aeiou]';
+
+select distinct CITY 
+from STATION 
+where substring(reverse(CITY),1,1) in('a','e','i','o','u');
+
+select distinct CITY 
+from STATION 
+where right(CITY,1) in ('a','i','e','o','u');
+
 --MySQL
-select distinct CITY from STATION where substr(CITY, -1, 1) in ('a','e','i','o','u');
-select distinct CITY from STATION where right(CITY,1) in ('a','i','e','o','u');
-select distinct CITY from STATION where substr(reverse(CITY), 1, 1) in ('a','e','i','o','u');
+select distinct CITY 
+from STATION 
+where substr(CITY, -1, 1) in ('a','e','i','o','u');
+
+select distinct CITY 
+from STATION 
+where right(CITY,1) in ('a','i','e','o','u');
+
+select distinct CITY 
+from STATION 
+where substr(reverse(CITY), 1, 1) in ('a','e','i','o','u');
 ```
 
 ## **Weather Observation Station 8**
@@ -298,13 +356,35 @@ where *LAT_N* is the northern latitude and *LONG_W* is the western longitude.
 
 ```sql
 --MS SQL Server
-select distinct(CITY) from STATION where CITY like '[a, e, i, o, u]%[a, e, i, o, u]';
-select distinct CITY from STATION where substring(CITY,1,1) in ('a','e','i','o','u') and substring(reverse(CITY),1,1) in ('a','e','i','o','u');
-select distinct CITY from station where left(CITY,1) in ('a','e','i','o','u') and right(CITY, 1) in ('a','e','i','o','u');
+select distinct(CITY) 
+from STATION 
+where CITY like '[a, e, i, o, u]%[a, e, i, o, u]';
+
+select distinct CITY 
+from STATION 
+where substring(CITY,1,1) in ('a','e','i','o','u') 
+  and substring(reverse(CITY),1,1) in ('a','e','i','o','u');
+  
+select distinct CITY 
+from station 
+where left(CITY,1) in ('a','e','i','o','u') 
+  and right(CITY, 1) in ('a','e','i','o','u');
+  
 --MySQL
-select distinct CITY from STATION where substr(CITY,1,1) in ('a','e','i','o','u') and substr(CITY,-1,1) in ('a','e','i','o','u');
-select distinct from STATION where substr(CITY,1,1) in ('a','e','i','o','u') and substr(reverse(CITY),1,1) in ('a','e','i','o','u');
-select distinct CITY from station where left(CITY,1) in ('a','e','i','o','u') and right(CITY, 1) in ('a','e','i','o','u');
+select distinct CITY 
+from STATION 
+where substr(CITY,1,1) in ('a','e','i','o','u') 
+  and substr(CITY,-1,1) in ('a','e','i','o','u');
+  
+select distinct 
+from STATION 
+where substr(CITY,1,1) in ('a','e','i','o','u') 
+  and substr(reverse(CITY),1,1) in ('a','e','i','o','u');
+  
+select distinct CITY 
+from station 
+where left(CITY,1) in ('a','e','i','o','u') 
+  and right(CITY, 1) in ('a','e','i','o','u');
 ```
 
 ## **Weather Observation Station 9**
@@ -327,11 +407,22 @@ where *LAT_N* is the northern latitude and *LONG_W* is the western longitude.
 
 ```sql
 --MS SQL Server
-select distinct(CITY) from STATION where CITY not like '[a,e,i,o,u]%';
-select distinct CITY from STATION where substring(CITY,1,1) not in ('a','e','i','o','u');
-select distinct CITY from STATION where left(CITY,1) not in ('a','i','e','o','u');
+select distinct(CITY) 
+from STATION 
+where CITY not like '[a,e,i,o,u]%';
+
+select distinct CITY 
+from STATION 
+where substring(CITY,1,1) not in ('a','e','i','o','u');
+
+select distinct CITY 
+from STATION 
+where left(CITY,1) not in ('a','i','e','o','u');
+
 --MySQL
-select distinct CITY from STATION where left(CITY,1) not in ('a','i','e','o','u');
+select distinct CITY 
+from STATION 
+where left(CITY,1) not in ('a','i','e','o','u');
 ```
 
 ## **Weather Observation Station 10**
@@ -342,9 +433,8 @@ Query the list of *CITY* names from **STATION** that *do not end* with vow
 
 The **STATION** table is described as follows:
 
-| Field | Type |
-| --- | --- |
 | ID | NUMBER |
+| --- | --- |
 | CITY | VARCHAR |
 | STATE | VARCHAR |
 | LAT_N | NUMBER |
@@ -354,13 +444,30 @@ where *LAT_N* is the northern latitude and *LONG_W* is the western longitude.
 
 ```sql
 --MS SQL Server
-select distinct(CITY) from STATION where CITY not like '%[a,e,i,o,u]'
-select distinct CITY from STATION where substring(reverse(CITY),1,1) not in ('a','e','i','o','u');
-select distinct CITY from STATION where right(CITY,1) not in ('a','i','e','o','u');
+select distinct(CITY) 
+from STATION 
+where CITY not like '%[a,e,i,o,u]'
+
+select distinct CITY 
+from STATION 
+where substring(reverse(CITY),1,1) not in ('a','e','i','o','u');
+
+select distinct CITY 
+from STATION 
+where right(CITY,1) not in ('a','i','e','o','u');
+
 --MySQL
-select distinct CITY from STATION where substr(CITY, -1, 1) not in ('a','e','i','o','u');
-select distinct CITY from STATION where right(CITY,1) not in ('a','i','e','o','u');
-select distinct CITY from STATION where substr(reverse(CITY), 1, 1) not in ('a','e','i','o','u');
+select distinct CITY 
+from STATION 
+where substr(CITY, -1, 1) not in ('a','e','i','o','u');
+
+select distinct CITY 
+from STATION 
+where right(CITY,1) not in ('a','i','e','o','u');
+
+select distinct CITY 
+from STATION 
+where substr(reverse(CITY), 1, 1) not in ('a','e','i','o','u');
 ```
 
 ## **Weather Observation Station 11**
@@ -371,9 +478,8 @@ Query the list of *CITY* names from **STATION** that either do not start wit
 
 The **STATION** table is described as follows:
 
-| Field | Type |
-| --- | --- |
 | ID | NUMBER |
+| --- | --- |
 | CITY | VARCHAR |
 | STATE | VARCHAR |
 | LAT_N | NUMBER |
@@ -383,9 +489,16 @@ where *LAT_N* is the northern latitude and *LONG_W* is the western longitude.
 
 ```sql
 --MS SQL Server
-select distinct(CITY) from STATION where CITY not like '%[a,e,i,o,u]' or CITY not like '[a,e,i,o,u]%';
+select distinct(CITY) 
+from STATION 
+where CITY not like '%[a,e,i,o,u]' 
+   or CITY not like '[a,e,i,o,u]%';
+   
 --MySQL
-select distinct CITY from STATION where left(CITY,1) not in ('a','i','e','o','u') or right(CITY,1) not in ('a','i','e','o','u');
+select distinct CITY 
+from STATION 
+where left(CITY,1) not in ('a','i','e','o','u') 
+   or right(CITY,1) not in ('a','i','e','o','u');
 ```
 
 ## **Weather Observation Station 12**
@@ -396,9 +509,8 @@ Query the list of *CITY* names from **STATION** that *do not start* with v
 
 The **STATION** table is described as follows:
 
-| Field | Type |
-| --- | --- |
 | ID | NUMBER |
+| --- | --- |
 | CITY | VARCHAR |
 | STATE | VARCHAR |
 | LAT_N | NUMBER |
@@ -408,9 +520,15 @@ where *LAT_N* is the northern latitude and *LONG_W* is the western longitude.
 
 ```sql
 --MS SQL Server
-select distinct(CITY) from STATION where CITY not like '%[a,e,i,o,u]' and CITY not like '[a,e,i,o,u]%';
+select distinct(CITY) 
+from STATION 
+where CITY not like '%[a,e,i,o,u]' and CITY not like '[a,e,i,o,u]%';
+
 --MySQL
-select distinct CITY from STATION where left(CITY,1) not in ('a','i','e','o','u') and right(CITY,1) not in ('a','i','e','o','u');
+select distinct CITY 
+from STATION 
+where left(CITY,1) not in ('a','i','e','o','u') 
+  and right(CITY,1) not in ('a','i','e','o','u');
 ```
 
 ## **Higher Than 75 Marks**
@@ -421,9 +539,8 @@ Query the *Name* of any student in **STUDENTS** who scored higher than **75*
 
 The **STUDENTS** table is described as follows:
 
-| Column | Type |
-| --- | --- |
 | ID | Integer |
+| --- | --- |
 | Name | String |
 | Marks | Integer |
 
@@ -440,17 +557,18 @@ The *Name* column only contains uppercase (`A`-`Z`) and lowercase (`a`-`z`) let
 
 **Sample Output**
 
-`Ashley
-Julia
-Belvet`
+`Ashley Julia Belvet`
 
 **Explanation**
 
-Only Ashley, Julia, and Belvet have *Marks* >**75** . If you look at the last three characters of each of their names, there are no duplicates and 'ley' < 'lia' < 'vet'.
+Only Ashley, Julia, and Belvet have *Marks* >**75** . If you look at the last three characters of each of their names, there are no duplicates and ‘ley’ < ‘lia’ < ‘vet’.
 
 ```sql
 --MS SQL Server, MySQL
-select NAME from STUDENTS where MARKS > 75 order by right(NAME, 3), ID asc;
+select NAME 
+from STUDENTS 
+where MARKS > 75 
+order by right(NAME, 3), ID asc;
 ```
 
 ## **Employee Names**
@@ -461,33 +579,36 @@ Write a query that prints a list of employee names (i.e.: the *name* attribute
 
 The **Employee** table containing employee data for a company is described as follows:
 
-| Column | Type |
-| --- | --- |
 | employee_id | Integer |
+| --- | --- |
 | name | String |
 | months | Integer |
 | salary | Integer |
 
-where *employee_id* is an employee's ID number, *name* is their name, *months* is the total number of months they've been working for the company, and *salary* is their monthly salary.
+where *employee_id* is an employee’s ID number, *name* is their name, *months* is the total number of months they’ve been working for the company, and *salary* is their monthly salary.
 
-![](https://github.com/syo2000/HackerRank/blob/main/SQL/image/employee.PNG?raw=true)
+| **employee_id** | **name** | **months** | **salary** |
+| --- | --- | --- | --- |
+| 12228 | Rose | 15 | 1968 |
+| 33645 | Angela | 1 | 3443 |
+| 45692 | Frank | 17 | 1608 |
+| 56118 | Patrick | 7 | 1345 |
+| 59725 | Lisa | 11 | 2330 |
+| 74197 | Kimberly | 16 | 4372 |
+| 78454 | Bonnie | 8 | 1771 |
+| 83565 | Michael | 6 | 2017 |
+| 98607 | Todd | 5 | 3396 |
+| 99989 | Joe | 9 | 3573 |
 
 **Sample Output**
 
-`Angela
-Bonnie
-Frank
-Joe
-Kimberly
-Lisa
-Michael
-Patrick
-Rose
-Todd`
+`Angela Bonnie Frank Joe Kimberly Lisa Michael Patrick Rose Todd`
 
 ```sql
 --MS SQL Server, MySQL
-select NAME from EMPLOYEE order by NAME asc;
+select NAME 
+from EMPLOYEE 
+order by NAME asc;
 ```
 
 ## **Employee Salaries**
@@ -498,23 +619,30 @@ Write a query that prints a list of employee names (i.e.: the *name* attribute
 
 The **Employee** table containing employee data for a company is described as follows:
 
-| Column | Type |
-| --- | --- |
 | employee_id | Integer |
+| --- | --- |
 | name | String |
 | months | Integer |
 | salary | Integer |
 
-where *employee_id* is an employee's ID number, *name* is their name, *months* is the total number of months they've been working for the company, and *salary* is the their monthly salary.
+where *employee_id* is an employee’s ID number, *name* is their name, *months* is the total number of months they’ve been working for the company, and *salary* is the their monthly salary.
 
-![](https://github.com/syo2000/HackerRank/blob/main/SQL/image/employee.PNG?raw=true)
+| **employee_id** | **name** | **months** | **salary** |
+| --- | --- | --- | --- |
+| 12228 | Rose | 15 | 1968 |
+| 33645 | Angela | 1 | 3443 |
+| 45692 | Frank | 17 | 1608 |
+| 56118 | Patrick | 7 | 1345 |
+| 59725 | Lisa | 11 | 2330 |
+| 74197 | Kimberly | 16 | 4372 |
+| 78454 | Bonnie | 8 | 1771 |
+| 83565 | Michael | 6 | 2017 |
+| 98607 | Todd | 5 | 3396 |
+| 99989 | Joe | 9 | 3573 |
 
 **Sample Output**
 
-`Angela
-Michael
-Todd
-Joe`
+`Angela Michael Todd Joe`
 
 **Explanation**
 
@@ -530,5 +658,7 @@ We order our output by ascending *employee_id*.
 
 ```sql
 --MS SQL Server, MySQL
-select NAME from EMPLOYEE where SALARY > 2000 and MONTHS < 10
+select NAME 
+from EMPLOYEE 
+where SALARY > 2000 and MONTHS < 10
 ```
