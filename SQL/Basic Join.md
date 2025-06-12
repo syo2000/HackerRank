@@ -1,7 +1,3 @@
-# Basic join
-
-Created time: June 28, 2023 11:00 AM
-
 ## **African Cities**
 
 Given the **CITY** and **COUNTRY** tables, query the names of all cities where the *CONTINENT* is *'Africa'*.
