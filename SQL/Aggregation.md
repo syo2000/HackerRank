@@ -1,4 +1,4 @@
-## **Revising Aggregations - The Count Function**
+## Revising Aggregations - The Count Function
 
 Query a *count* of the number of cities in **CITY** having a *Population* larger than **100000** .
 
@@ -21,7 +21,7 @@ from CITY
 where POPULATION > 100000
 ```
 
-## **Revising Aggregations - The Sum Function**
+## Revising Aggregations - The Sum Function
 
 Query the total population of all cities in **CITY** where *District* is **California**.
 
@@ -198,7 +198,7 @@ select cast(ceiling((avg(cast(SALARY AS float)) - avg(cast(replace(SALARY, 0, ''
 FROM EMPLOYEES;
 ```
 
-## **Top Earners**
+## Top Earners
 
 We define an employee's *total earnings* to be their monthly  worked, and the *maximum total earnings* to be the maximum total earnings for any employee in the **Employee** table. Write a query to find the *maximum total earnings* for all employees as well as the total number of employees who have maximum total earnings. Then print these values as  **2** space-separated integers.
 
@@ -269,7 +269,7 @@ select cast(sum(LAT_N) as decimal(10,2)), cast(sum(LONG_W) as decimal(10,2))
 from STATION
 ```
 
-## **Weather Observation Station 13**
+## Weather Observation Station 13
 
 Query the sum of *Northern Latitudes* (*LAT_N*) from **STATION** having values greater than  **38.7880** and less than **137.2345.** Truncate your answer to 4 decimal places.
 
@@ -297,7 +297,7 @@ from STATION
 where LAT_N between 38.7880 and 137.2345;
 ```
 
-## **Weather Observation Station 14**
+## Weather Observation Station 14
 
 Query the greatest value of the *Northern Latitudes* (*LAT_N*) from **STATION** that is less than **137.2345**. Truncate your answer to **4** decimal places.
 
@@ -321,7 +321,7 @@ from STATION
 where LAT_N < 137.2345
 ```
 
-## **Weather Observation Station 15**
+## Weather Observation Station 15
 
 Query the *Western Longitude* (*LONG_W*) for the largest *Northern Latitude* (*LAT_N*) in **STATION** that is less than **137.2345** . Round your answer to **4** decimal places.
 
@@ -346,7 +346,7 @@ where LAT_N <= 137.2345
 order by LAT_N desc
 ```
 
-## **Weather Observation Station 16**
+## Weather Observation Station 16
 
 Query the smallest *Northern Latitude* (*LAT_N*) from **STATION** that is greater than 38.7780 . Round your answer to  decimal places.
 
@@ -367,7 +367,7 @@ from STATION
 where LAT_N >= 38.7780
 ```
 
-## **Weather Observation Station 17**
+## Weather Observation Station 17
 
 Query the *Western Longitude* (*LONG_W*)where the smallest *Northern Latitude* (*LAT_N*) in **STATION** is greater than **38.7780** . Round your answer to **4** decimal places.
 
@@ -391,7 +391,7 @@ where LAT_N >= 38.7780
 order by LAT_N asc
 ```
 
-## **Weather Observation Station 18**
+## Weather Observation Station 18
 
 Consider **P1(a, b)** and  **P2(c, d)** to be two points on a *2D* plane.
 
@@ -422,7 +422,7 @@ select cast(abs(min(LAT_N) - max(LAT_N)) + abs(min(LONG_W) - max(LONG_W)) as dec
 from STATION 
 ```
 
-## **Weather Observation Station 19**
+## Weather Observation Station 19
 
 Consider P1(a,c) and P2(b,d) to be two points on a 2D plane where (a,b) are the respective minimum and (c,d) maximum values of *Northern Latitude* (*LAT_N*) and  are the respective minimum and maximum values of *Western Longitude* (*LONG_W*) in **STATION**.
 
@@ -444,7 +444,7 @@ select cast(SQRT(power(min(LAT_N) - max(LAT_N),2) + power(min(LONG_W) - max(LONG
 from STATION 
 ```
 
-## **Weather Observation Station 20**
+## Weather Observation Station 20
 
 A [*median*](https://en.wikipedia.org/wiki/Median) is defined as a number separating the higher half of a data set from the lower half. Query the *median* of the *Northern Latitudes* (*LAT_N*) from **STATION** and round your answer to 4 decimal places.
 
