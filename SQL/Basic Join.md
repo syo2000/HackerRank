@@ -91,7 +91,7 @@ where ctry.CONTINENT is not null
 group by ctry.CONTINENT
 ```
 
-# The Report
+## The Report
 
 You are given two tables: *Students* and *Grades*. *Students* contains three columns *ID*, *Name* and *Marks*.
 
