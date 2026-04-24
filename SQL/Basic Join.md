@@ -1,4 +1,4 @@
-## **African Cities**
+## African Cities
 
 Given the **CITY** and **COUNTRY** tables, query the names of all cities where the *CONTINENT* is *'Africa'*.
 
@@ -46,7 +46,7 @@ on c.COUNTRYCODE = ctry.CODE
 where ctry.CONTINENT = 'Africa' 
 ```
 
-## **Average Population of Each Continent**
+## Average Population of Each Continent
 
 Given the **CITY** and **COUNTRY** tables, query the names of all the continents (*COUNTRY.Continent*) and their respective average city populations (*CITY.Population*) rounded *down* to the nearest integer.
 
@@ -91,7 +91,7 @@ where ctry.CONTINENT is not null
 group by ctry.CONTINENT
 ```
 
-# **The Report**
+# The Report
 
 You are given two tables: *Students* and *Grades*. *Students* contains three columns *ID*, *Name* and *Marks*.
 
@@ -565,7 +565,7 @@ where b.HACKER_ID is null
 order by a.[Number of challenge] desc , a.HACKER_ID asc
 ```
 
-## **Contest Leaderboard**
+## Contest Leaderboard
 
 You did such a great job helping Julia with her last coding contest challenge that she wants you to work on this one, too!
 
@@ -658,7 +658,7 @@ having coalesce(sum(SCORE),0) <> 0
 order by sum(SCORE) desc, HACKER_ID asc
 ```
 
-## **Population Census**
+## Population Census
 
 Given the **CITY** and **COUNTRY** tables, query the sum of the populations of all cities where the *CONTINENT* is *'Asia'*.
 
