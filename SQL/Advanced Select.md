@@ -1,4 +1,4 @@
-## **The PADS**
+## The PADS
 
 Generate the following two result sets:
 
@@ -74,7 +74,7 @@ group by OCCUPATION
 order by count(OCCUPATION) asc,OCCUPATION;
 ```
 
-## **Occupations**
+## Occupations
 
 [Pivot](https://en.wikipedia.org/wiki/Pivot_table) the *Occupation* column in **OCCUPATIONS** so that each *Name* is sorted alphabetically and displayed underneath its corresponding *Occupation*. The output column headers should be *Doctor*, *Professor*, *Singer*, and *Actor*, respectively.
 
@@ -140,7 +140,7 @@ from
 group by RowNumber order by RowNumber
 ```
 
-## **Binary Tree Nodes**
+## Binary Tree Nodes
 
 You are given a table, *BST*, containing two columns: *N* and *P,* where *N* represents the value of a node in *Binary Tree*, and *P* is the parent of *N*.
 
@@ -188,7 +188,7 @@ select N
 from BST order by n
 ```
 
-## **New Companies**
+## New Companies
 
 Amber's conglomerate corporation just acquired some new companies. Each of the companies follows this hierarchy:
 
@@ -310,7 +310,7 @@ group by e.COMPANY_CODE, c.FOUNDER
 order by e.COMPANY_CODE;
 ```
 
-## **Type of Triangle**
+## Type of Triangle
 
 Write a query identifying the *type* of each record in the **TRIANGLES** table using its three side lengths. Output one of the following statements for each record in the table:
 
